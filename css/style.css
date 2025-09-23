@@ -1,3 +1,7 @@
+:root{
+    --header-height: 90px; /* fallback default; JS مقدار دقیق را هنگام بارگذاری تنظیم می‌کند */
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -269,8 +273,9 @@ body {
 }
 
 /* Main Content */
+/* Default padding-top uses CSS variable; JS will set the exact value at runtime */
 .main {
-    /* padding-top: 100px; was here */
+    padding-top: var(--header-height);
 }
 
 /* Section Styles */
@@ -744,12 +749,12 @@ body {
     .hero-title {
         font-size: 3.5rem;
     }
-    
+
     .tools-grid {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 25px;
     }
-    
+
     .services-grid {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -760,7 +765,7 @@ body {
     .hamburger {
         display: flex;
     }
-    
+
     .nav-menu {
         position: fixed;
         top: 100%;
@@ -776,23 +781,23 @@ body {
         transition: right 0.3s ease;
         border-top: 1px solid rgba(59, 130, 246, 0.2);
     }
-    
+
     .nav-menu.active {
         right: 0;
     }
-    
+
     .nav-item {
         width: 100%;
         text-align: center;
     }
-    
+
     .nav-link {
         display: block;
         width: 100%;
         padding: 15px 20px;
         font-size: 1.1rem;
     }
-    
+
     .dropdown-menu {
         position: static;
         opacity: 1;
@@ -804,52 +809,52 @@ body {
         box-shadow: none;
         margin-top: 10px;
     }
-    
+
     .hero-section {
         padding: 100px 0 60px;
     }
-    
+
     .hero-title {
         font-size: 2.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.2rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .section {
         padding: 60px 0;
     }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .tools-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .tool-card {
         padding: 25px;
     }
-    
+
     .social-links {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 30px;
     }
-    
+
     .footer-links {
         justify-content: center;
     }
@@ -859,31 +864,31 @@ body {
     .container {
         padding: 0 15px;
     }
-    
+
     .hero-title {
         font-size: 2.2rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .tool-card {
         padding: 20px;
     }
-    
+
     .tool-name {
         font-size: 1.4rem;
     }
-    
+
     .service-card {
         padding: 30px 20px;
     }
-    
+
     .services-grid {
         grid-template-columns: 1fr;
     }
