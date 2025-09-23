@@ -1,8 +1,10 @@
 // AI Golden - Professional Persian AI Tools Directory
-// Updated JavaScript: safer parallax, dynamic header padding, single-injected ripple style,
-// accessibility and external link security fixes, improved mobile dropdown binding.
+// Updated JavaScript: theme toggle + existing functionality
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme first so UI renders correctly
+    initializeTheme();
+
     // Initialize all features
     initializeNavigation();
     initializeScrollEffects();
@@ -16,6 +18,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('🚀 AI Golden website loaded successfully!');
 });
+
+/* ---------------------------
+   Theme (Dark/Light) handling
+   --------------------------- */
+function initializeTheme() {
+    const HTML = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+
+    // Read saved theme; default = 'dark'
+    const saved = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    const initial = saved || (prefersLight ? 'light' : 'dark');
+
+    applyTheme(initial, false);
+
+    // attach event
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            const current = HTML.classList.contains('light-theme') ? 'light' : 'dark';
+            const next = current === 'light' ? 'dark' : 'light';
+            applyTheme(next, true);
+        });
+
+        // Keyboard support
+        toggleBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleBtn.click();
+            }
+        });
+    }
+}
+
+function applyTheme(theme, persist = true) {
+    const HTML = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (theme === 'light') {
+        HTML.classList.add('light-theme');
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', 'true');
+            toggleBtn.querySelector('.theme-icon').textContent = '☀️';
+        }
+    } else {
+        HTML.classList.remove('light-theme');
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', 'false');
+            toggleBtn.querySelector('.theme-icon').textContent = '🌙';
+        }
+    }
+    if (persist) localStorage.setItem('theme', theme);
+}
+
+/* ---------------------------
+   Existing code (unchanged)
+   --------------------------- */
 
 // Navigation functionality
 function initializeNavigation() {
@@ -665,8 +722,6 @@ function initializePerformanceOptimizations() {
         }
     });
 }
-
-// Initialize performance optimizations already called on DOMContentLoaded earlier
 
 // Add loading animation
 function showLoadingAnimation() {
