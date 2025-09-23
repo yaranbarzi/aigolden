@@ -271,6 +271,17 @@ function initializeCardInteractions() {
     const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
 
     cards.forEach(card => {
+        // Add special handling for Veo3 card
+        if (card.getAttribute('data-category') === 'video-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showVeo3Modal();
+                });
+            }
+        }
+
         // Add ripple effect on click (but don't trigger when clicking a link)
         card.addEventListener('click', function(e) {
             if (!e.target.closest('a')) {
@@ -832,3 +843,86 @@ window.AIGolden = {
     scrollToElement,
     debounce
 };
+
+// Add special handling for Veo3 card inside initializeCardInteractions()
+function initializeCardInteractions() {
+    const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
+
+    cards.forEach(card => {
+        // Add special handling for Veo3 card
+        if (card.getAttribute('data-category') === 'video-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showVeo3Modal();
+                });
+            }
+        }
+
+        // Add ripple effect on click (but don't trigger when clicking a link)
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('a')) {
+                createRippleEffect(e, this);
+            }
+        });
+
+        // Enhanced hover effects with 3D transform
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
+            this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) rotateX(0) scale(1)';
+        });
+
+        // Add keyboard navigation support
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = this.querySelector('a');
+                if (link) {
+                    link.click();
+                } else {
+                    this.click();
+                }
+            }
+        });
+    });
+}
+
+// Add modal functionality
+function showVeo3Modal() {
+    const modal = document.getElementById('veo3Modal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+}
