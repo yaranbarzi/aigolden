@@ -926,3 +926,12 @@ function showVeo3Modal() {
         }
     });
 }
+
+function openTutorialVideo() {
+    const tutorialSection = document.getElementById('tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
