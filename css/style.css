@@ -821,7 +821,7 @@ html.light-theme .footer {
 
 .modal-content {
     background: var(--bg-card);
-    max-width: 800px;
+    max-width: 600px;
     margin: 50px auto;
     padding: 30px;
     border-radius: 15px;
@@ -854,11 +854,41 @@ html.light-theme .footer {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.modal-tool-button {
+    background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.modal-tool-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.modal-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
 .modal-video {
     width: 100%;
     aspect-ratio: 16/9;
-    margin: 20px 0;
     border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .modal h2 {
