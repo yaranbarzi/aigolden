@@ -870,11 +870,26 @@ html.light-theme .footer {
     font-weight: 600;
     text-align: center;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 1rem;
+}
+
+.modal-tool-button.secondary {
+    background: transparent;
+    border: 2px solid var(--accent-500);
+    color: var(--accent-500);
 }
 
 .modal-tool-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.modal-tool-button.secondary:hover {
+    background: var(--accent-500);
+    color: white;
 }
 
 .modal-video-container {
@@ -901,6 +916,63 @@ html.light-theme .footer {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 15px;
+}
+
+/* Tutorial Section */
+.tutorial-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(10, 10, 15, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tutorial-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(10, 10, 15, 0.7) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.tutorial-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.tutorial-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, var(--accent-500), #8b5cf6);
+    border-radius: 2px;
+}
+
+.tutorial-description {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.tutorial-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 /* Responsive Design */
