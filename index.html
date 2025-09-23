@@ -346,14 +346,17 @@
             
             <div class="modal-actions">
                 <a href="https://opal.withgoogle.com/?flow=drive%3A%2F13IrAv3XxvwebeTAD46fSmPe1dDRvfm9L&shared&mode=app" 
-                   target="_blank" 
                    class="modal-tool-button"
-                   rel="noopener noreferrer">
+                   onclick="window.open(this.href, '_blank').focus(); return false;">
                     ورود به ابزار VEO3
                 </a>
+                
+                <button onclick="openTutorialVideo()" class="modal-tool-button secondary">
+                    مشاهده آموزش
+                </button>
             </div>
 
-            <div class="modal-video-container">
+            <div id="tutorial-section" style="display: none;" class="modal-video-container">
                 <iframe class="modal-video"
                     src="https://www.youtube.com/embed/9ZoX4wWGljI"
                     title="آموزش ساخت ویدیو با VEO3"
