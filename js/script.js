@@ -304,6 +304,14 @@ function initializeCardInteractions() {
                     showTTSModal();
                 });
             }
+        } else if (card.getAttribute('data-category') === 'extraction-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showExtractionModal();
+                });
+            }
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -906,6 +914,14 @@ function initializeCardInteractions() {
                     showTTSModal();
                 });
             }
+        } else if (card.getAttribute('data-category') === 'extraction-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showExtractionModal();
+                });
+            }
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -1129,6 +1145,58 @@ function showTTSModal() {
     document.addEventListener('keydown', escHandler);
 }
 
+// Add extraction modal functionality
+function showExtractionModal() {
+    const modal = document.getElementById('extractionModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('extraction-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('extraction-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+        }
+    }
+
+    // Close on Escape key
+    const escHandler = function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('extraction-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+            // Remove the event listener
+            document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
 function openTutorialVideo() {
     const tutorialSection = document.getElementById('tutorial-section');
     if (tutorialSection) {
@@ -1158,6 +1226,15 @@ function openPromptTutorialVideo() {
 
 function openTTSTutorialVideo() {
     const tutorialSection = document.getElementById('tts-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openExtractionTutorialVideo() {
+    const tutorialSection = document.getElementById('extraction-tutorial-section');
     if (tutorialSection) {
         tutorialSection.style.display = 'block';
         // Scroll to video smoothly
