@@ -1013,6 +1013,41 @@ html.light-theme .modal p {
     z-index: 1;
 }
 
+/* dubbing section */
+.dubbing-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.dubbing-section {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid var(--card-border);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+html.light-theme .dubbing-section {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.dubbing-section h3 {
+    color: var(--text-main);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.dubbing-section p {
+    color: var(--muted);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.dubbing-section .modal-actions {
+    margin: 15px 0;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-title {
