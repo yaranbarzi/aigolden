@@ -271,13 +271,21 @@ function initializeCardInteractions() {
     const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
 
     cards.forEach(card => {
-        // Add special handling for Veo3 card
+        // Handle special tool cards
         if (card.getAttribute('data-category') === 'video-tools') {
             const toolLink = card.querySelector('.tool-link');
             if (toolLink) {
                 toolLink.addEventListener('click', function(e) {
                     e.preventDefault();
                     showVeo3Modal();
+                });
+            }
+        } else if (card.getAttribute('data-category') === 'voice-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showVoiceModal();
                 });
             }
         }
@@ -849,13 +857,21 @@ function initializeCardInteractions() {
     const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
 
     cards.forEach(card => {
-        // Add special handling for Veo3 card
+        // Handle special tool cards
         if (card.getAttribute('data-category') === 'video-tools') {
             const toolLink = card.querySelector('.tool-link');
             if (toolLink) {
                 toolLink.addEventListener('click', function(e) {
                     e.preventDefault();
                     showVeo3Modal();
+                });
+            }
+        } else if (card.getAttribute('data-category') === 'voice-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showVoiceModal();
                 });
             }
         }
@@ -927,8 +943,50 @@ function showVeo3Modal() {
     });
 }
 
+function showVoiceModal() {
+    const modal = document.getElementById('voiceModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 function openTutorialVideo() {
     const tutorialSection = document.getElementById('tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openVoiceTutorialVideo() {
+    const tutorialSection = document.getElementById('voice-tutorial-section');
     if (tutorialSection) {
         tutorialSection.style.display = 'block';
         // Scroll to video smoothly
