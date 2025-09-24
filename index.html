@@ -155,13 +155,13 @@
                             <div class="icon-placeholder">🗣️</div>
                         </div>
                         <h3 class="tool-name">ابزار متن به صدا</h3>
-                        <p class="tool-description">تبدیل متن به گفتار طبیعی و با کیفیت بالا در زبان‌های مختلف</p>
+                        <p class="tool-description">تبدیل متن به گفتار طبیعی با کیفیت حرفه‌ای و بدون محدودیت کپی‌رایت با استفاده از Gemini TTS</p>
                         <div class="tool-tags">
                             <span class="tag">متن به گفتار</span>
                             <span class="tag">TTS</span>
                             <span class="tag">صدای طبیعی</span>
                         </div>
-                        <a href="https://elevenlabs.io" target="_blank" class="tool-link" rel="noopener noreferrer">
+                        <a href="#" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -424,6 +424,37 @@
                 <iframe class="modal-video"
                     src="https://www.youtube.com/embed/Tj2cPJibvZo"
                     title="آموزش استفاده از ربات پرامپت ساز"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="ttsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="بستن">×</button>
+            <h2>Gemini TTS - تبدیل متن به گفتار حرفه‌ای</h2>
+            <p>با استفاده از ابزار قدرتمند Gemini TTS می‌توانید متن‌های خود را به گفتار طبیعی و با کیفیت تبدیل کنید. این ابزار با بهره‌گیری از گوینده‌های حرفه‌ای و هوش مصنوعی پیشرفته، صدایی کاملاً طبیعی و بدون محدودیت کپی‌رایت تولید می‌کند که برای تولید محتوا ایده‌آل است.</p>
+            
+            <div class="modal-actions">
+                <a href="https://aistudio.google.com/generate-speech" 
+                   class="modal-tool-button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ورود به Gemini TTS
+                </a>
+                
+                <button onclick="openTTSTutorialVideo()" class="modal-tool-button secondary">
+                    مشاهده آموزش
+                </button>
+            </div>
+
+            <div id="tts-tutorial-section" style="display: none;" class="modal-video-container">
+                <iframe class="modal-video"
+                    src="https://www.youtube.com/embed/9rtn2Mj9Mjc"
+                    title="آموزش کار با Gemini TTS"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
