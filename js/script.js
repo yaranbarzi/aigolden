@@ -288,6 +288,14 @@ function initializeCardInteractions() {
                     showVoiceModal();
                 });
             }
+        } else if (card.getAttribute('data-category') === 'prompt-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPromptModal();
+                });
+            }
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -874,6 +882,14 @@ function initializeCardInteractions() {
                     showVoiceModal();
                 });
             }
+        } else if (card.getAttribute('data-category') === 'prompt-tools') {
+            const toolLink = card.querySelector('.tool-link');
+            if (toolLink) {
+                toolLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showPromptModal();
+                });
+            }
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -994,6 +1010,57 @@ function showVoiceModal() {
     document.addEventListener('keydown', escHandler);
 }
 
+function showPromptModal() {
+    const modal = document.getElementById('promptModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('prompt-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('prompt-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+        }
+    }
+
+    // Close on Escape key
+    const escHandler = function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('prompt-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+            // Remove the event listener
+            document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
 function openTutorialVideo() {
     const tutorialSection = document.getElementById('tutorial-section');
     if (tutorialSection) {
@@ -1005,6 +1072,15 @@ function openTutorialVideo() {
 
 function openVoiceTutorialVideo() {
     const tutorialSection = document.getElementById('voice-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openPromptTutorialVideo() {
+    const tutorialSection = document.getElementById('prompt-tutorial-section');
     if (tutorialSection) {
         tutorialSection.style.display = 'block';
         // Scroll to video smoothly
