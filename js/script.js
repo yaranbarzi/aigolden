@@ -956,6 +956,11 @@ function showVoiceModal() {
         closeBtn.onclick = function() {
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('voice-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
         }
     }
 
@@ -964,16 +969,29 @@ function showVoiceModal() {
         if (e.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('voice-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
         }
     }
 
     // Close on Escape key
-    document.addEventListener('keydown', function(e) {
+    const escHandler = function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            // Reset video state
+            const videoContainer = document.getElementById('voice-tutorial-section');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+            // Remove the event listener
+            document.removeEventListener('keydown', escHandler);
         }
-    });
+    };
+    document.addEventListener('keydown', escHandler);
 }
 
 function openTutorialVideo() {
