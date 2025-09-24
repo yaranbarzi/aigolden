@@ -175,7 +175,7 @@
                         <p class="tool-description">استخراج متن از صدا و ویدیو با پشتیبانی از چندین زبان، ترجمه خودکار و چت هوشمند با قابلیت آپلود فایل</p>
                         <div class="tool-tags">
                             <span class="tag">تبدیل صدا به متن</span>
-                            <span class="tag">ترجمه </span>
+                            <span class="tag">ترجمه</span>
                             <span class="tag">چت بات</span>
                         </div>
                         <a href="#" class="tool-link">
@@ -463,7 +463,37 @@
         </div>
     </div>
 
+    <div id="extractionModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="بستن">×</button>
+            <h2>استخراج متن از صدا</h2>
+            <p>با این ابزار می‌توانید به راحتی از فایل‌های صوتی و ویدیویی متن استخراج کنید، آن را ترجمه کنید و با چت بات هوشمند تعامل داشته باشید.</p>
+            
+            <div class="modal-actions">
+                <a href="https://aistudio.google.com/asr" 
+                   class="modal-tool-button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ورود به ابزار استخراج متن
+                </a>
+                
+                <button onclick="openExtractionTutorialVideo()" class="modal-tool-button secondary">
+                    مشاهده آموزش
+                </button>
+            </div>
+
+            <div id="extraction-tutorial-section" style="display: none;" class="modal-video-container">
+                <iframe class="modal-video"
+                    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                    title="آموزش کار با ابزار استخراج متن"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
     <script src="./js/script.js"></script>
 </body>
 </html>
-
