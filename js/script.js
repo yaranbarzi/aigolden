@@ -282,7 +282,9 @@ function initializeCardInteractions() {
             'prompt-tools': showPromptModal,
             'tts-tools': showTTSModal,
             'extraction-tools': showExtractionModal,
-            'dubbing-tools': showDubbingModal
+            'dubbing-tools': showDubbingModal,
+            'image-tools': showImageModal,
+            'music-tools': showMusicModal
         };
 
         if (modalHandlers[category]) {
@@ -871,7 +873,9 @@ function initializeCardInteractions() {
             'prompt-tools': showPromptModal,
             'tts-tools': showTTSModal,
             'extraction-tools': showExtractionModal,
-            'dubbing-tools': showDubbingModal
+            'dubbing-tools': showDubbingModal,
+            'image-tools': showImageModal,
+            'music-tools': showMusicModal
         };
 
         if (modalHandlers[category]) {
@@ -1210,6 +1214,74 @@ function showDubbingModal() {
         }
     };
     document.addEventListener('keydown', escHandler);
+}
+
+// Add image modal functionality
+function showImageModal() {
+    const modal = document.getElementById('imageModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Add music modal functionality
+function showMusicModal() {
+    const modal = document.getElementById('musicModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
 }
 
 function openTutorialVideo() {
