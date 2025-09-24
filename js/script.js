@@ -58,13 +58,13 @@ function applyTheme(theme, persist = true) {
         HTML.classList.add('light-theme');
         if (toggleBtn) {
             toggleBtn.setAttribute('aria-pressed', 'true');
-            toggleBtn.querySelector('.theme-icon').textContent = '☀️';
+            toggleBtn.querySelector('.theme-icon').textContent = '🌙';
         }
     } else {
         HTML.classList.remove('light-theme');
         if (toggleBtn) {
             toggleBtn.setAttribute('aria-pressed', 'false');
-            toggleBtn.querySelector('.theme-icon').textContent = '🌙';
+            toggleBtn.querySelector('.theme-icon').textContent = '☀️';
         }
     }
     if (persist) localStorage.setItem('theme', theme);
