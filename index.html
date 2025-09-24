@@ -206,13 +206,13 @@
                             <div class="icon-placeholder">🎭</div>
                         </div>
                         <h3 class="tool-name">ابزار دوبله ویدیو</h3>
-                        <p class="tool-description">دوبله خودکار ویدیوها به زبان‌های مختلف </p>
+                        <p class="tool-description">دوبله خودکار و رایگان ویدیوها به زبان‌های مختلف با امکان استفاده از صدای دلخواه یا صداهای از پیش آماده</p>
                         <div class="tool-tags">
                             <span class="tag">دوبله ویدیو</span>
                             <span class="tag">ترجمه</span>
-                            <span class="tag">همگام‌سازی</span>
+                            <span class="tag">هوش مصنوعی</span>
                         </div>
-                        <a href="#" target="_blank" class="tool-link" rel="noopener noreferrer">
+                        <a href="#" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -490,6 +490,94 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="dubbingModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="بستن">×</button>
+            <h2>دوبله هوشمند ویدیو</h2>
+            <p>با استفاده از هوش مصنوعی می‌توانید به صورت کاملاً رایگان ویدیوهای خود را به زبان‌های مختلف دوبله کنید. سه روش مختلف برای دوبله در اختیار شما قرار دارد:</p>
+            
+            <div class="dubbing-sections">
+                <!-- دوبله با صدای خود شخص -->
+                <div class="dubbing-section">
+                    <h3>دوبله با صدای خود شخص</h3>
+                    <p>با این روش می‌توانید از صدای شخص داخل ویدیو برای دوبله استفاده کنید</p>
+                    <div class="modal-actions">
+                        <a href="https://colab.research.google.com/github/yaranbarzi/aigolden-dubbing/blob/main/SoniTranslate_2025_08_26FA.ipynb" 
+                           class="modal-tool-button"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            ورود به ابزار دوبله شخصی
+                        </a>
+                        <button onclick="openDubbingVideo('personal')" class="modal-tool-button secondary">
+                            مشاهده آموزش
+                        </button>
+                    </div>
+                    <div id="dubbing-personal-video" style="display: none;" class="modal-video-container">
+                        <iframe class="modal-video"
+                            src="https://www.youtube.com/embed/SFaiYP3xEfU"
+                            title="آموزش دوبله با صدای خود شخص"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- دوبله با جمینای -->
+                <div class="dubbing-section">
+                    <h3>دوبله با صداهای جمینای</h3>
+                    <p>استفاده از صداهای حرفه‌ای و با کیفیت جمینای برای دوبله ویدیو</p>
+                    <div class="modal-actions">
+                        <a href="https://colab.research.google.com/github/yaranbarzi/aigolden-dubbing/blob/main/aigolden_2025_08Dub_NOUI.ipynb" 
+                           class="modal-tool-button"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            ورود به ابزار دوبله جمینای
+                        </a>
+                        <button onclick="openDubbingVideo('gemini')" class="modal-tool-button secondary">
+                            مشاهده آموزش
+                        </button>
+                    </div>
+                    <div id="dubbing-gemini-video" style="display: none;" class="modal-video-container">
+                        <iframe class="modal-video"
+                            src="https://www.youtube.com/embed/fB6AVu0jQr4"
+                            title="آموزش دوبله با صداهای جمینای"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- دوبله شورت -->
+                <div class="dubbing-section">
+                    <h3>دوبله شورت ویدیو</h3>
+                    <p>ابزار مخصوص برای دوبله ویدیوهای کوتاه و شورت‌ها</p>
+                    <div class="modal-actions">
+                        <a href="https://colab.research.google.com/github/yaranbarzi/aigolden-dubbing/blob/main/aigolden_Short_Dub.ipynb" 
+                           class="modal-tool-button"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            ورود به ابزار دوبله شورت
+                        </a>
+                        <button onclick="openDubbingVideo('short')" class="modal-tool-button secondary">
+                            مشاهده آموزش
+                        </button>
+                    </div>
+                    <div id="dubbing-short-video" style="display: none;" class="modal-video-container">
+                        <iframe class="modal-video"
+                            src="https://www.youtube.com/embed/G-VDeG898Fw"
+                            title="آموزش دوبله شورت ویدیو"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
