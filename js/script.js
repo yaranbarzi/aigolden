@@ -271,7 +271,6 @@ function initializeCardInteractions() {
     const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
 
     cards.forEach(card => {
-        // Handle special tool cards
         const toolLink = card.querySelector('.tool-link');
         const category = card.getAttribute('data-category');
         
@@ -282,7 +281,8 @@ function initializeCardInteractions() {
             'voice-tools': showVoiceModal,
             'prompt-tools': showPromptModal,
             'tts-tools': showTTSModal,
-            'extraction-tools': showExtractionModal
+            'extraction-tools': showExtractionModal,
+            'dubbing-tools': showDubbingModal
         };
 
         if (modalHandlers[category]) {
@@ -870,7 +870,8 @@ function initializeCardInteractions() {
             'voice-tools': showVoiceModal,
             'prompt-tools': showPromptModal,
             'tts-tools': showTTSModal,
-            'extraction-tools': showExtractionModal
+            'extraction-tools': showExtractionModal,
+            'dubbing-tools': showDubbingModal
         };
 
         if (modalHandlers[category]) {
@@ -1153,6 +1154,64 @@ function showExtractionModal() {
     document.addEventListener('keydown', escHandler);
 }
 
+// Add dubbing modal functionality
+function showDubbingModal() {
+    const modal = document.getElementById('dubbingModal');
+    if (!modal) return;
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Close button functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset all video containers
+            ['personal', 'gemini', 'short'].forEach(type => {
+                const videoContainer = document.getElementById(`dubbing-${type}-video`);
+                if (videoContainer) {
+                    videoContainer.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    // Close on outside click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset all video containers
+            ['personal', 'gemini', 'short'].forEach(type => {
+                const videoContainer = document.getElementById(`dubbing-${type}-video`);
+                if (videoContainer) {
+                    videoContainer.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    // Close on Escape key
+    const escHandler = function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Reset all video containers
+            ['personal', 'gemini', 'short'].forEach(type => {
+                const videoContainer = document.getElementById(`dubbing-${type}-video`);
+                if (videoContainer) {
+                    videoContainer.style.display = 'none';
+                }
+            });
+            // Remove the event listener
+            document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
 function openTutorialVideo() {
     const tutorialSection = document.getElementById('tutorial-section');
     if (tutorialSection) {
@@ -1197,47 +1256,20 @@ function openExtractionTutorialVideo() {
         tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
-function openTutorialVideo() {
-    const tutorialSection = document.getElementById('tutorial-section');
-    if (tutorialSection) {
-        tutorialSection.style.display = 'block';
-        // Scroll to video smoothly
-        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-}
 
-function openVoiceTutorialVideo() {
-    const tutorialSection = document.getElementById('voice-tutorial-section');
-    if (tutorialSection) {
-        tutorialSection.style.display = 'block';
+function openDubbingVideo(type) {
+    const videoContainer = document.getElementById(`dubbing-${type}-video`);
+    if (videoContainer) {
+        // Hide all video containers first
+        ['personal', 'gemini', 'short'].forEach(t => {
+            const container = document.getElementById(`dubbing-${t}-video`);
+            if (container) {
+                container.style.display = 'none';
+            }
+        });
+        // Show the selected video container
+        videoContainer.style.display = 'block';
         // Scroll to video smoothly
-        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-}
-
-function openPromptTutorialVideo() {
-    const tutorialSection = document.getElementById('prompt-tutorial-section');
-    if (tutorialSection) {
-        tutorialSection.style.display = 'block';
-        // Scroll to video smoothly
-        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-}
-
-function openTTSTutorialVideo() {
-    const tutorialSection = document.getElementById('tts-tutorial-section');
-    if (tutorialSection) {
-        tutorialSection.style.display = 'block';
-        // Scroll to video smoothly
-        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-}
-
-function openExtractionTutorialVideo() {
-    const tutorialSection = document.getElementById('extraction-tutorial-section');
-    if (tutorialSection) {
-        tutorialSection.style.display = 'block';
-        // Scroll to video smoothly
-        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        videoContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
