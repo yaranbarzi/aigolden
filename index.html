@@ -127,7 +127,7 @@
                             <span class="tag">RVC</span>
                             <span class="tag">کلون صدا</span>
                         </div>
-                        <a href="#" class="tool-link" rel="noopener noreferrer">
+                        <a href="#" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -370,16 +370,17 @@
         </div>
     </div>
 
-    <script src="./js/script.js"></script>
-</body> <div class="modal-content">
-</html>     <button class="modal-close" aria-label="بستن">×</button>
+    <div id="voiceModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="بستن">×</button>
             <h2>ساخت مدل RVC و تغییر صدا</h2>
             <p>با استفاده از ابزار ساخت مدل RVC و تغییر صدا، قادر خواهید بود مدل صدای خواننده یا شخص دلخواه رو بسازید و هر صدایی رو تبدیل و شبیه سازی کنید</p>
             
             <div class="modal-actions">
                 <a href="https://colab.research.google.com/github/yaranbarzi/Applio/blob/main/Applio_2025_RVC.ipynb" 
                    class="modal-tool-button"
-                   onclick="window.open(this.href, '_blank').focus(); return false;">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     ورود به ابزار RVC
                 </a>
                 
