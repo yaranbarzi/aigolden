@@ -272,46 +272,24 @@ function initializeCardInteractions() {
 
     cards.forEach(card => {
         // Handle special tool cards
-        if (card.getAttribute('data-category') === 'video-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showVeo3Modal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'voice-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showVoiceModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'prompt-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showPromptModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'tts-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showTTSModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'extraction-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showExtractionModal();
-                });
-            }
+        const toolLink = card.querySelector('.tool-link');
+        const category = card.getAttribute('data-category');
+        
+        if (!toolLink || !category) return;
+
+        const modalHandlers = {
+            'video-tools': showVeo3Modal,
+            'voice-tools': showVoiceModal,
+            'prompt-tools': showPromptModal,
+            'tts-tools': showTTSModal,
+            'extraction-tools': showExtractionModal
+        };
+
+        if (modalHandlers[category]) {
+            toolLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modalHandlers[category]();
+            });
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -882,46 +860,24 @@ function initializeCardInteractions() {
 
     cards.forEach(card => {
         // Handle special tool cards
-        if (card.getAttribute('data-category') === 'video-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showVeo3Modal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'voice-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showVoiceModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'prompt-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showPromptModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'tts-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showTTSModal();
-                });
-            }
-        } else if (card.getAttribute('data-category') === 'extraction-tools') {
-            const toolLink = card.querySelector('.tool-link');
-            if (toolLink) {
-                toolLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showExtractionModal();
-                });
-            }
+        const toolLink = card.querySelector('.tool-link');
+        const category = card.getAttribute('data-category');
+        
+        if (!toolLink || !category) return;
+
+        const modalHandlers = {
+            'video-tools': showVeo3Modal,
+            'voice-tools': showVoiceModal,
+            'prompt-tools': showPromptModal,
+            'tts-tools': showTTSModal,
+            'extraction-tools': showExtractionModal
+        };
+
+        if (modalHandlers[category]) {
+            toolLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modalHandlers[category]();
+            });
         }
 
         // Add ripple effect on click (but don't trigger when clicking a link)
@@ -1197,6 +1153,50 @@ function showExtractionModal() {
     document.addEventListener('keydown', escHandler);
 }
 
+function openTutorialVideo() {
+    const tutorialSection = document.getElementById('tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openVoiceTutorialVideo() {
+    const tutorialSection = document.getElementById('voice-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openPromptTutorialVideo() {
+    const tutorialSection = document.getElementById('prompt-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openTTSTutorialVideo() {
+    const tutorialSection = document.getElementById('tts-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+function openExtractionTutorialVideo() {
+    const tutorialSection = document.getElementById('extraction-tutorial-section');
+    if (tutorialSection) {
+        tutorialSection.style.display = 'block';
+        // Scroll to video smoothly
+        tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
 function openTutorialVideo() {
     const tutorialSection = document.getElementById('tutorial-section');
     if (tutorialSection) {
