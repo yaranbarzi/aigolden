@@ -585,21 +585,36 @@ function initializeSmoothScrolling() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            // If href is "#" ignore
             const href = this.getAttribute('href');
-            if (!href || href === '#') return;
+            // If href is "#" or doesn't exist, do nothing.
+            if (!href || href === '#') {
+                return;
+            }
 
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = href.substring(1);
+            const target = document.getElementById(targetId);
+
             if (target) {
+                e.preventDefault(); // Prevent default anchor behavior only if target exists
+                
                 const header = document.querySelector('.header');
                 const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = target.offsetTop - headerHeight - 20;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // Close mobile menu if open
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    const hamburger = document.getElementById('hamburger');
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
             }
         });
     });
