@@ -640,12 +640,16 @@ html.light-theme .theme-icon {
 .social-icon {
     width: 60px;
     height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-500), #8b5cf6);
+    border-radius: 16px;
+    color: white;
 }
 
 .social-icon .icon-placeholder {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    display: none; /* Hide the old placeholder */
 }
 
 .social-info h3 {
