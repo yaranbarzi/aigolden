@@ -13,6 +13,42 @@
     --accent-400: #60a5fa;
 }
 
+/* Accessibility utility */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Tools filter */
+.tools-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#tool-category-select {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    background: var(--card-bg);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    min-width: 220px;
+}
+
+#tool-category-select:focus {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+    border-color: var(--accent-500);
+}
+
 /* فونت جدید XB-Titre */
 @font-face {
     font-family: 'XB-Titre';
