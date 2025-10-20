@@ -9,6 +9,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- SEO & Social -->
+        <meta name="robots" content="index, follow">
+        <meta name="keywords" content="ابزار هوش مصنوعی, AI tools, تولید تصویر, TTS, RVC, دوبله ویدیو, استخراج متن, پرامپت ساز">
+        <link rel="canonical" href="https://aigolden.pages.dev/">
+        <meta property="og:locale" content="fa_IR">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="AI Golden — مرجع ابزارهای هوش مصنوعی">
+        <meta property="og:description" content="مرجع کامل ابزارهای هوش مصنوعی - کشف بهترین ابزارهای AI برای کسب و کار و زندگی روزمره">
+        <meta property="og:url" content="/">
+        <meta property="og:image" content="./images/mylogo.png">
+        <meta property="og:site_name" content="AI Golden">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="AI Golden — مرجع ابزارهای هوش مصنوعی">
+        <meta name="twitter:description" content="کشف بهترین ابزارهای هوش مصنوعی برای کسب و کار و زندگی روزمره">
+        <meta name="twitter:image" content="./images/mylogo.png">
+        <!-- hreflang for multi-language support (update hrefs to real absolute URLs after deployment) -->
+        <link rel="alternate" hreflang="fa" href="/">
+        <link rel="alternate" hreflang="x-default" href="/">
+
+        <!-- Structured data (Organization + WebSite) -->
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "name": "AI Golden",
+                        "url": "https://aigolden.pages.dev/",
+                        "logo": "https://aigolden.pages.dev/images/mylogo.png",
+                        "sameAs": [
+                            "https://www.youtube.com/@aigolden",
+                            "https://t.me/ai_golden"
+                        ]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "name": "AI Golden",
+                        "url": "https://aigolden.pages.dev/",
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://aigolden.pages.dev/?s={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                    }
+                ]
+            }
+            </script>
 </head>
 <body>
     <header class="header">
@@ -81,7 +128,26 @@
                     <p class="section-subtitle">مجموعه‌ای کامل از بهترین ابزارهای هوش مصنوعی</p>
                 </div>
 
-                <div class="tools-grid">
+                <!-- Category filter: improves UX and SEO by grouping related tools -->
+                <div class="tools-filter" role="region" aria-label="فیلتر دسته‌بندی ابزارها">
+                    <label for="tool-category-select" class="sr-only">انتخاب دسته</label>
+                    <select id="tool-category-select" aria-label="فیلتر دسته‌بندی ابزارها">
+                        <option value="all">همه دسته‌ها</option>
+                        <option value="image-tools">تصویر</option>
+                        <option value="video-tools">ویدیو</option>
+                        <option value="voice-tools">تغییر صدا / RVC</option>
+                        <option value="music-tools">موسیقی</option>
+                        <option value="tts-tools">TTS</option>
+                        <option value="extraction-tools">استخراج متن</option>
+                        <option value="prompt-tools">پرامپت/اتوماسیون</option>
+                        <option value="dubbing-tools">دوبله</option>
+                        <!-- Suggested additional categories -->
+                        <option value="analytics-tools">تحلیل و آنالیز</option>
+                        <option value="security-tools">حریم خصوصی و امنیت</option>
+                    </select>
+                </div>
+
+                <div class="tools-grid" id="toolsGrid">
                     <div class="tool-card" id="image-tools" data-category="image-tools">
                         <div class="tool-icon">
                             <div class="icon-placeholder">🎨</div>
@@ -93,7 +159,7 @@
                             <span class="tag">ادیت عکس</span>
                             <span class="tag">هنر دیجیتال</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/image-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -110,7 +176,7 @@
                             <span class="tag">Veo3</span>
                             <span class="tag">انیمیشن</span>
                         </div>
-                        <a href="#" target="_blank" class="tool-link" rel="noopener noreferrer">
+                        <a href="/tools/video-tools.html" target="_blank" class="tool-link" rel="noopener noreferrer">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -127,7 +193,7 @@
                             <span class="tag">RVC</span>
                             <span class="tag">کلون صدا</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/voice-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -144,7 +210,7 @@
                             <span class="tag">آهنگسازی</span>
                             <span class="tag">خلاقیت</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/music-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -161,7 +227,7 @@
                             <span class="tag">TTS</span>
                             <span class="tag">صدای طبیعی</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/tts-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -178,7 +244,7 @@
                             <span class="tag">ترجمه</span>
                             <span class="tag">چت بات</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/extraction-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -195,7 +261,7 @@
                             <span class="tag">بهینه‌سازی</span>
                             <span class="tag">خلاقیت</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/prompt-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
@@ -212,7 +278,7 @@
                             <span class="tag">ترجمه</span>
                             <span class="tag">هوش مصنوعی</span>
                         </div>
-                        <a href="#" class="tool-link">
+                        <a href="/tools/dubbing-tools.html" class="tool-link">
                             مشاهده ابزار
                             <span class="link-arrow">←</span>
                         </a>
