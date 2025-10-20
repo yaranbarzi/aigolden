@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aigolden.pages.dev/</loc>
-    <lastmod>2025-10-11T11:31:39+00:00</lastmod>
+    <lastmod>2025-10-20T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/image-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/video-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/voice-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/music-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/tts-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/extraction-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/prompt-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/tools/dubbing-tools.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/services/rvc-order.html</loc>
+  </url>
+  <url>
+    <loc>https://aigolden.pages.dev/services/dubbing-order.html</loc>
   </url>
 </urlset>
