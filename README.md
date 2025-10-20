@@ -41,6 +41,44 @@ If you want, I can:
 
 Tell me which of the optional tasks you'd like next.
 
+Repository structure (updated)
+
+/
+├── index.html                # صفحه اصلی (RTL) - هدر، بخش ابزارها، مودال‌ها
+├── google7392f21b46e5423e.html # فایل تایید گوگل (در صورت نیاز)
+├── sitemap.xml               # فهرست نقشه سایت (فایل XML، شامل صفحات ابزار و سرویس)
+├── robots.txt                # اجازه ایندکس و آدرس sitemap
+├── README.md                 # این فایل (بروز شده - ساختار و دستورالعمل‌ها)
+├── css/
+│   └── style.css             # استایل‌ها، تم تیره/روشن، ریسپانسیو
+├── fonts/                    # فونت‌های محلی (در صورت وجود)
+├── images/                   # لوگوها و تصاویر سایت
+├── js/
+│   └── script.js             # اسکریپت‌ها: تم، منو، جستجو، فیلتر دسته‌بندی، مودال‌ها
+├── tools/                    # صفحات مجزای هر دسته ابزار (قابل ایندکس توسط گوگل)
+│   ├── image-tools.html
+│   ├── video-tools.html
+│   ├── voice-tools.html
+│   ├── music-tools.html
+│   ├── tts-tools.html
+│   ├── extraction-tools.html
+│   ├── prompt-tools.html
+│   └── dubbing-tools.html
+└── services/                 # صفحات سرویس و سفارش
+		├── rvc-order.html
+		└── dubbing-order.html
+
+Notes
+- فایل‌های جدید (داخل `tools/` و `services/`) صفحات SEO-friendly ساده‌ای دارند و شامل meta/JSON-LD اولیه هستند.
+- `sitemap.xml` فعلاً شامل صفحات بالا (URLهای absolute به دامنه `https://aigolden.pages.dev`) است.
+
+What I need from you next
+- لطفاً یکی از دو گزینه زیر را انتخاب کن تا ادامه بدم:
+	A) راهنمای گام‌به‌گام برای ارسال sitemap در Google Search Console (من مرحله‌به‌مرحله می‌گم چه کار کنی).
+	B) من sitemap را کامل‌تر می‌کنم (اضافه کردن `lastmod` و `priority`) و برای 1-2 صفحه کلیدی محتوای 400-600 کلمه‌ای و FAQ تولید می‌کنم تا بعد تو sitemap جدید را در GSC ثبت کنی.
+
+بعد از انتخاب تو، من فوراً شروع می‌کنم و نتیجه را اینجا گزارش می‌دهم.
+
 Google Search Console / Re-indexing (recommended steps)
 - If این سایت را قبلاً در Google Search Console داشته‌ای، بعد از اینکه تغییرات را منتشر کردی، این کارها را انجام بده:
 	1) به حساب Google Search Console وارد شو؛ اگر مالکیت سایت را قبلاً تایید کرده‌ای که عالی است.
