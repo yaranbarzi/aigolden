@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeParallaxEffects();
     initializePerformanceOptimizations();
     setHeaderPadding();
+    initializeToolFilters();
 
     console.log('🚀 AI Golden website loaded successfully!');
 });
@@ -49,6 +50,47 @@ function initializeTheme() {
             }
         });
     }
+}
+
+/* ---------------------------
+   Tool filtering
+   --------------------------- */
+function initializeToolFilters() {
+    const select = document.getElementById('tool-category-select');
+    const toolsGrid = document.getElementById('toolsGrid');
+
+    if (!select || !toolsGrid) return;
+
+    function applyFilter(category) {
+        const cards = toolsGrid.querySelectorAll('.tool-card');
+        cards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = '';
+                card.setAttribute('aria-hidden', 'false');
+            } else {
+                card.style.display = 'none';
+                card.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Update URL (shallow) so categories are shareable
+        if (history.replaceState) {
+            const url = new URL(window.location.href);
+            if (category && category !== 'all') url.searchParams.set('category', category);
+            else url.searchParams.delete('category');
+            history.replaceState(null, '', url.toString());
+        }
+    }
+
+    // Initialize from URL param if present
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get('category') || 'all';
+    select.value = initial;
+    applyFilter(initial);
+
+    select.addEventListener('change', function() {
+        applyFilter(this.value);
+    });
 }
 
 function applyTheme(theme, persist = true) {
@@ -266,66 +308,7 @@ function initializeAnimations() {
     });
 }
 
-// Enhanced card interactions
-function initializeCardInteractions() {
-    const cards = document.querySelectorAll('.tool-card, .service-card, .social-link');
-
-    cards.forEach(card => {
-        const toolLink = card.querySelector('.tool-link');
-        const category = card.getAttribute('data-category');
-        
-        if (!toolLink || !category) return;
-
-        const modalHandlers = {
-            'video-tools': showVeo3Modal,
-            'voice-tools': showVoiceModal,
-            'prompt-tools': showPromptModal,
-            'tts-tools': showTTSModal,
-            'extraction-tools': showExtractionModal,
-            'dubbing-tools': showDubbingModal,
-            'image-tools': showImageModal,
-            'music-tools': showMusicModal
-        };
-
-        if (modalHandlers[category]) {
-            toolLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                modalHandlers[category]();
-            });
-        }
-
-        // Add ripple effect on click (but don't trigger when clicking a link)
-        card.addEventListener('click', function(e) {
-            if (!e.target.closest('a')) {
-                createRippleEffect(e, this);
-            }
-        });
-
-        // Enhanced hover effects with 3D transform
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
-            this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) rotateX(0) scale(1)';
-        });
-
-        // Add keyboard navigation support
-        card.setAttribute('tabindex', '0');
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                const link = this.querySelector('a');
-                if (link) {
-                    link.click();
-                } else {
-                    this.click();
-                }
-            }
-        });
-    });
-}
+// Card interactions are implemented below (single definition kept to avoid duplication)
 
 // Create ripple effect (inject ripple keyframes/style only once)
 (function() {
