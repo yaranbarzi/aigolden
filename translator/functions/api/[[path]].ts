@@ -71,7 +71,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     if (path === "/api/verify-pro-password" && request.method === "POST") {
       const body = await request.json() as any;
       const password = body?.password;
-      const expectedPassword = env.VITE_PRO_PASSWORD || env.PRO_PASSWORD || "aigoldenyt";
+      const expectedPassword = env.VITE_PRO_PASSWORD || env.PRO_PASSWORD;
 
       if (typeof password === "string" && password.trim() === expectedPassword.trim()) {
         return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
