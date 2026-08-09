@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-brand-bg: #121214;
+  --color-brand-card: #1e1e24;
+  --color-brand-card-light: #2a2a32;
+  --color-brand-accent: #00adb5;
+  --color-brand-accent-hover: #38bdf8;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: #e0e0e6;
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbars for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #121214;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a32;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00adb5;
+}
+
+/* Rotating Multi-Color Neon Border Effect */
+@property --neon-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-neon {
+  0% {
+    --neon-angle: 0deg;
+  }
+  100% {
+    --neon-angle: 360deg;
+  }
+}
+
+.neon-border-container {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 3px;
+  background-image: conic-gradient(
+    from var(--neon-angle),
+    #ff007f,
+    #00f0ff,
+    #7000ff,
+    #ffb700,
+    #00ff88,
+    #ff007f
+  );
+  animation: spin-neon 6s linear infinite;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25), 0 0 40px rgba(255, 0, 127, 0.2);
+}
+
+.neon-border-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 1.05rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
