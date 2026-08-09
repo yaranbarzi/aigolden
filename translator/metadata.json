@@ -1,0 +1,8 @@
+{
+  "name": "Remix Multilingual SRT Subtitle Translator",
+  "description": "A highly professional, full-stack, multilingual web application for translating SRT subtitle files using the Gemini API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
